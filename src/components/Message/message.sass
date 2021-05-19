@@ -51,8 +51,19 @@
       font-size: 14px
       line-height: 20px
       color: #fff
+  &-bottom
+    display: flex
   &__time
     font-size: 12px
     opacity: 0.5
     color: #000
     margin-top: 5px
+  &-status
+    .secondArrow, .firstArrow
+      opacity: 0
+    &.send
+      .firstArrow
+        opacity: 1
+    &.readed
+      .secondArrow
+        opacity: 1
