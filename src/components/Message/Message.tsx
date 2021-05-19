@@ -1,7 +1,7 @@
 import React from 'react';
 import "./message.sass";
 import classNames from 'classnames';
-import avatar from "../../assets/img/default-avatar.jpg";
+import avatar from "assets/img/default-avatar.jpg";
 
 interface MessageProps {
   isMy: boolean
