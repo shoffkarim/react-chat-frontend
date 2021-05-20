@@ -1,6 +1,7 @@
 import React from "react";
 import "./message.sass";
 import classNames from "classnames";
+import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict"
 import avatar from "assets/img/default-avatar.jpg";
 
 interface Photos {
@@ -9,13 +10,14 @@ interface Photos {
 }
 interface MessageProps {
   isMy: boolean;
+  date: Date;
   send?: boolean;
   readed?: boolean;
   text?: string;
   attachments?: Array<Photos>;
 }
 
-const Message: React.FC<MessageProps> = ({ isMy, send, readed, text, attachments }) => {
+const Message: React.FC<MessageProps> = ({ isMy, send, readed, text, attachments, date }) => {
   return (
     <div className={classNames("message", isMy ? "my" : "friend")}>
       <div className="message-wrapper">
@@ -39,7 +41,7 @@ const Message: React.FC<MessageProps> = ({ isMy, send, readed, text, attachments
           </div>
         )}
       <div className="message-bottom">
-        <div className="message__time">3 min ago</div>
+        <div className="message__time">{formatDistanceToNowStrict(date, {addSuffix: true})}</div>
         {isMy && (
           <div
             className={classNames(
