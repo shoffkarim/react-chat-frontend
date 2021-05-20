@@ -1,8 +1,8 @@
 import React from "react";
 import "./message.sass";
 import classNames from "classnames";
-import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict"
 import avatar from "assets/img/default-avatar.jpg";
+import { Time } from "components";
 
 interface Photos {
   id: number,
@@ -41,7 +41,9 @@ const Message: React.FC<MessageProps> = ({ isMy, send, readed, text, attachments
           </div>
         )}
       <div className="message-bottom">
-        <div className="message__time">{formatDistanceToNowStrict(date, {addSuffix: true})}</div>
+        <div className="message__time">
+          <Time date={date} prefix={true}/>
+        </div>
         {isMy && (
           <div
             className={classNames(

@@ -1,6 +1,7 @@
 import classNames from "classnames";
+import { Time } from "components";
 import React from "react";
-import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
+
 import "./Dialog.sass";
 
 interface IUser {
@@ -31,7 +32,7 @@ const DialogItem: React.FC<IDialogItem> = ({ user, message }) => {
         <div className="dialogs-item__top">
           <p className="dialogs-item__name">{user.name}</p>
           <p className="dialogs-item__time">
-            {formatDistanceToNowStrict(message.created_at, { addSuffix: true })}
+            <Time date={message.created_at} prefix={true}/>
           </p>
         </div>
         <div className="dialogs-item__bottom">
