@@ -2,13 +2,20 @@ import React from "react";
 import "./message.sass";
 import classNames from "classnames";
 import avatar from "assets/img/default-avatar.jpg";
+
+interface Photos {
+  id: number,
+  url: string
+}
 interface MessageProps {
   isMy: boolean;
   send?: boolean;
   readed?: boolean;
+  text?: string;
+  attachments?: Array<Photos>;
 }
 
-const Message: React.FC<MessageProps> = ({ isMy, send, readed }) => {
+const Message: React.FC<MessageProps> = ({ isMy, send, readed, text, attachments }) => {
   return (
     <div className={classNames("message", isMy ? "my" : "friend")}>
       <div className="message-wrapper">
@@ -17,10 +24,20 @@ const Message: React.FC<MessageProps> = ({ isMy, send, readed }) => {
             <img src={avatar} alt="" />
           </div>
         )}
-        <div className="message__bubble">
-          <p>Hello, World!</p>
-        </div>
+        {text && (
+          <div className="message__bubble">
+            <p>{text}</p>
+          </div>
+        )}
       </div>
+      {attachments && (
+          <div className="message__attachments">
+            {attachments.map((obj, index) =>
+              <img src={obj.url} alt="" key={index} />
+            )}
+
+          </div>
+        )}
       <div className="message-bottom">
         <div className="message__time">3 min ago</div>
         {isMy && (
