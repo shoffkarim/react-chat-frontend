@@ -1,0 +1,8 @@
+users
+
+id - number
+name - string
+login - string
+password - string (md5)
+last-seen - date
+created_at - date
