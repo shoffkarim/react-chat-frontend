@@ -1,5 +1,5 @@
 import React from "react";
-import { DialogItem, Message } from "components";
+import { DialogInput, DialogItem, Message } from "components";
 
 const App: React.FC = () => {
   const photos = [
@@ -42,33 +42,38 @@ const App: React.FC = () => {
           <DialogItem user={user2} message={message2} />
         </div>
         <div className="dialog-window">
-          <Message
-            isMy={false}
-            date={new Date(2016, 12, 1)}
-            text={"Hello, Wolrd!"}
-          />
-          <Message
-            isMy={true}
-            date={new Date()}
-            send={true}
-            readed={false}
-            text={"Hello, Wolrd!"}
-          />
-          <Message
-            isMy={true}
-            date={new Date()}
-            send={true}
-            readed={true}
-            text={"Hi"}
-          />
-          <Message
-            isMy={true}
-            date={new Date(2021, 4, 20, 14, 25)}
-            send={true}
-            readed={true}
-            text={"Hi"}
-            attachments={photos}
-          />
+          <div className="dialog-messages">
+            <Message
+              isMy={false}
+              date={new Date(2016, 12, 1)}
+              text={"Hello, Wolrd!"}
+            />
+            <Message
+              isMy={true}
+              date={new Date()}
+              send={true}
+              readed={false}
+              text={"Hello, Wolrd!"}
+            />
+            <Message
+              isMy={true}
+              date={new Date()}
+              send={true}
+              readed={true}
+              text={"Hi"}
+            />
+            <Message
+              isMy={true}
+              date={new Date(2021, 4, 20, 14, 25)}
+              send={true}
+              readed={true}
+              text={"Hi"}
+              attachments={photos}
+            />
+          </div>
+          <div className="dialog-input">
+            <DialogInput/>
+          </div>
         </div>
       </div>
     </div>
