@@ -5,4 +5,5 @@ name - string
 login - string
 password - string (md5)
 last-seen - date
+avatar - string
 created_at - date

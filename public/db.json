@@ -6,6 +6,7 @@
       "login": "shoff",
       "password": "12345",
       "last_seen": "Wed May 26 2021 18:58:11 GMT+0500 (Екатеринбург, стандартное время)",
+      "avatar": "default-avatar.jpg",
       "created_at": "Sat May 22 2021 18:58:11 GMT+0500 (Екатеринбург, стандартное время)"
     },
     {
@@ -14,6 +15,7 @@
       "login": "barak",
       "password": "54321",
       "last_seen": "Wed May 26 2021 18:52:11 GMT+0500 (Екатеринбург, стандартное время)",
+      "avatar": "default-avatar.jpg",
       "created_at": "Sat May 22 2021 18:52:11 GMT+0500 (Екатеринбург, стандартное время)"
     }
   ],
