@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Karim Sharafutdinov",
+      "login": "shoff",
+      "password": "12345",
+      "last_seen": "Wed May 26 2021 18:58:11 GMT+0500 (Екатеринбург, стандартное время)",
+      "created_at": "Sat May 22 2021 18:58:11 GMT+0500 (Екатеринбург, стандартное время)"
+    },
+    {
+      "id": 2,
+      "name": "Barak Obama",
+      "login": "barak",
+      "password": "54321",
+      "last_seen": "Wed May 26 2021 18:52:11 GMT+0500 (Екатеринбург, стандартное время)",
+      "created_at": "Sat May 22 2021 18:52:11 GMT+0500 (Екатеринбург, стандартное время)"
+    }
+  ],
+  "chats": [
+    {
+      "id": 1,
+      "user_id": 2
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "chat_id": 1,
+      "user_id": 2,
+      "content": "Hello, world!",
+      "date_create": "Wed May 26 2021 18:51:11 GMT+0500 (Екатеринбург, стандартное время)",
+      "is_read": false
+    }
+  ]
+}
