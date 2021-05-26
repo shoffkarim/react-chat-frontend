@@ -38,8 +38,13 @@ const App: React.FC = () => {
     <div className="App">
       <div className="main">
         <div className="dialogs">
-          <DialogItem user={user} message={message} />
-          <DialogItem user={user2} message={message2} />
+          <div className="dialogs-title">
+            <p>Messages</p>
+          </div>
+          <div className="dialog-list">
+            <DialogItem user={user} message={message} />
+            <DialogItem user={user2} message={message2} />
+          </div>
         </div>
         <div className="dialog-window">
           <div className="dialog-messages">
