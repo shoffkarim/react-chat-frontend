@@ -1,6 +1,14 @@
 import React from "react";
 import { DialogInput, DialogItem, DialogMessages } from "components";
 
+export type GlobalContent = {
+  mainUser: number
+}
+const GlobalContext = React.createContext<GlobalContent>({
+  mainUser: 1
+})
+export const useGlobalContext = () => React.useContext(GlobalContext)
+
 const App: React.FC = () => {
 
   const user = {
@@ -25,7 +33,10 @@ const App: React.FC = () => {
     created_at: new Date(2020, 4, 20, 14, 25),
     isReaded: true,
   };
+
+
   return (
+    <GlobalContext.Provider value={{mainUser: 1}}>
     <div className="App">
       <div className="main">
         <div className="dialogs">
@@ -45,6 +56,7 @@ const App: React.FC = () => {
         </div>
       </div>
     </div>
+    </GlobalContext.Provider>
   );
 };
 

@@ -3,13 +3,14 @@ import "./message.sass";
 import classNames from "classnames";
 import avatar from "assets/img/default-avatar.jpg";
 import { Time } from "components";
+import { useGlobalContext } from "App";
 
 interface Photos {
   id: number,
   url: string
 }
 interface MessageProps {
-  isMy: boolean;
+  user_id: number;
   date: Date;
   send?: boolean;
   readed?: boolean;
@@ -17,7 +18,14 @@ interface MessageProps {
   attachments?: Array<Photos>;
 }
 
-const Message: React.FC<MessageProps> = ({ isMy, send, readed, text, attachments, date }) => {
+const Message: React.FC<MessageProps> = ({ user_id, send, readed, text, attachments, date }) => {
+  const { mainUser } = useGlobalContext()
+  let isMy = true;
+  if (mainUser === user_id) {
+    isMy = true;
+  } else {
+    isMy = false;
+  }
   return (
     <div className={classNames("message", isMy ? "my" : "friend")}>
       <div className="message-wrapper">
