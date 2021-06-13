@@ -1,3 +1,4 @@
+import { MessageBD } from "interfaces/message";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMessages } from "redux/actions/Messages";
@@ -8,20 +9,13 @@ interface DialogMessagesProps {
   chatId: number;
 }
 
-interface MessageBD {
-  id: number;
-  chat_id: 1;
-  user_id: 2;
-  content: string;
-  date_create: string;
-  is_read: boolean;
-}
 
 const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId }) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
-    dispatch(fetchMessages());
-  }, [dispatch]);
+    dispatch(fetchMessages(chatId));
+  }, [dispatch, chatId]);
+
   const messages: MessageBD[] = useSelector(
     (state: RootState) => state.Messages.items
   );

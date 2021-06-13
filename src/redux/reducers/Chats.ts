@@ -1,9 +1,11 @@
+import { AnyAction } from "redux";
+
 const InitState = {
   items: [],
   isLoaded: false
 }
 
-const Chats = (state = InitState, action) => {
+const Chats = (state = InitState, action: AnyAction) => {
   switch(action.type){
     case "SET_CHATS" :
       return {

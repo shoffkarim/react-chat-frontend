@@ -1,9 +1,10 @@
+import { AnyAction } from "redux";
 const InitState = {
   items: [],
   isLoaded: false
 }
 
-const Messages = (state = InitState, action) => {
+const Messages = (state = InitState, action: AnyAction ) => {
   switch(action.type){
     case "SET_MESSAGES" :
       return {

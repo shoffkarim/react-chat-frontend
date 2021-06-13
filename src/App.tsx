@@ -49,7 +49,7 @@ const App: React.FC = () => {
           </div>
         </div>
         <div className="dialog-window">
-          <DialogMessages chatId={2}/>
+          <DialogMessages chatId={1}/>
           <div className="dialog-input">
             <DialogInput/>
           </div>
