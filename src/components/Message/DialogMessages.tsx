@@ -1,67 +1,44 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMessages } from "redux/actions/Messages";
+import { RootState } from "redux/store";
 import Message from "./Message";
 
 interface DialogMessagesProps {
-  chatId: number,
-};
-
-interface MessagesRedux {
-  items: object[],
-  isLoaded: boolean
-}
-interface stateRedux {
-  Chats: object
-  Messages: object
+  chatId: number;
 }
 
-const DialogMessages: React.FC<DialogMessagesProps> = ({chatId}) => {
+interface MessageBD {
+  id: number;
+  chat_id: 1;
+  user_id: 2;
+  content: string;
+  date_create: string;
+  is_read: boolean;
+}
+
+const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId }) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(fetchMessages());
   }, [dispatch]);
-  const messages = useSelector((state : stateRedux) => state.Messages);
-  console.log(messages.items);
-  const photos = [
-    {
-      id: 1,
-      url: "default-avatar.jpg",
-    },
-    {
-      id: 2,
-      url: "default-avatar.jpg",
-    },
-  ];
+  const messages: MessageBD[] = useSelector(
+    (state: RootState) => state.Messages.items
+  );
+  console.log(messages);
   return (
     <div className="dialog-messages">
-      <Message
-        isMy={false}
-        date={new Date(2016, 12, 1)}
-        text={"Hello, Wolrd!"}
-      />
-      <Message
-        isMy={true}
-        date={new Date()}
-        send={true}
-        readed={false}
-        text={"Hello, Wolrd!"}
-      />
-      <Message
-        isMy={true}
-        date={new Date()}
-        send={true}
-        readed={true}
-        text={"Hi"}
-      />
-      <Message
-        isMy={true}
-        date={new Date(2021, 4, 20, 14, 25)}
-        send={true}
-        readed={true}
-        text={"Hi"}
-        attachments={photos}
-      />
+      {messages && messages.map((obj, index) =>
+          <Message
+            isMy={false}
+            date={new Date(obj.date_create)}
+            send={true}
+            readed={false}
+            text={obj.content}
+            key={index}
+          />
+        )
+      }
     </div>
   );
 };
