@@ -33,8 +33,10 @@ const App: React.FC = () => {
     created_at: new Date(2020, 4, 20, 14, 25),
     isReaded: true,
   };
-
-
+  const [activeChat, setActiveChat] = React.useState(0)
+  const onSelectChat = (chat_id:number) => {
+    setActiveChat(chat_id);
+  };
   return (
     <GlobalContext.Provider value={{mainUser: 1}}>
     <div className="App">
@@ -44,12 +46,12 @@ const App: React.FC = () => {
             <p>Messages</p>
           </div>
           <div className="dialog-list">
-            <DialogItem user={user} message={message} />
-            <DialogItem user={user2} message={message2} />
+            <DialogItem user={user} message={message} chat_id={1} selectChat={(chat_id) => onSelectChat(chat_id)}/>
+            <DialogItem user={user2} message={message2} chat_id={2} selectChat={(chat_id) => onSelectChat(chat_id)}/>
           </div>
         </div>
         <div className="dialog-window">
-          <DialogMessages chatId={1}/>
+          <DialogMessages chatId={activeChat}/>
           <div className="dialog-input">
             <DialogInput/>
           </div>

@@ -20,11 +20,13 @@ interface IMessage {
 interface IDialogItem {
   user: IUser;
   message: IMessage;
+  chat_id: number;
+  selectChat: (arg0: number) => void
 }
 
-const DialogItem: React.FC<IDialogItem> = ({ user, message }) => {
+const DialogItem: React.FC<IDialogItem> = ({ user, message, chat_id, selectChat }) => {
   return (
-    <div className={classNames("dialogs-item")}>
+    <div className={classNames("dialogs-item")} onClick={() => selectChat(chat_id)}>
       <div className={classNames("dialogs-item__avatar", user.isOnline? "online" : "")}>
         <img src={user.avatar} alt="" />
       </div>
