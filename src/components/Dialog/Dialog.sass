@@ -1,16 +1,16 @@
 .dialogs
   display: flex
   flex-direction: column
-  max-width: 300px
+  max-width: 320px
   width: 100%
   overflow: hidden
-  padding: 0 10px
+  padding: 0 0px
   background-color: #f4f4fa
   &-title
     font-size: 25px
     color: #000
     margin: 0
-    padding: 10px 0px
+    padding: 10px 10px
   &-item
     display: flex
     flex-direction: row
@@ -19,12 +19,28 @@
     width: 100%
     border-bottom: 1px solid #eaebf4
     cursor: pointer
+    transition: all 0.4s
+    &:first-child
+      border-top: 1px solid #eaebf4
+    &:hover
+      background-color: #4849a1
+      transition: all 0.4s
+      .dialogs-item__name
+        color: #fff
+        transition: all 0.4s
+      .dialogs-item__time
+        color: #fff
+        transition: all 0.4s
+      .dialogs-item__text
+        color: #fff
+        transition: all 0.4s
     &__avatar
       width: 30px
       min-width: 30px
       height: 30px
       min-height: 30px
       position: relative
+      padding-left: 10px
       img
         width: 100%
         height: 100%
@@ -48,6 +64,7 @@
       margin-left: 10px
       max-width: 100%
       overflow: hidden
+      padding-right: 10px
     &__top
       display: flex
       flex-direction: row
@@ -57,11 +74,13 @@
       font-size: 16px
       color: #000
       margin: 0px
+      transition: all 0.4s
     &__time
       font-size: 12px
       opacity: 0.5
       color: #000
       margin: 0px
+      transition: all 0.4s
     &__bottom
       display: flex
       flex-direction: row
@@ -76,6 +95,7 @@
       margin: 0px
       margin-top: 5px
       width: 70%
+      transition: all 0.4s
       &.dark
         color: #000
       &.gray

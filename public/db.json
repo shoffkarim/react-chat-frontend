@@ -22,7 +22,8 @@
   "chats": [
     {
       "id": 1,
-      "user_id": 2
+      "user_id": 2,
+      "last_message": 1
     }
   ],
   "messages": [
@@ -35,7 +36,7 @@
       "is_read": false
     },
     {
-      "id": 1,
+      "id": 2,
       "chat_id": 1,
       "user_id": 1,
       "content": "Hello, world!",
@@ -43,15 +44,15 @@
       "is_read": false
     },
     {
-      "id": 1,
+      "id": 3,
       "chat_id": 1,
       "user_id": 2,
       "content": "dasf!",
-      "date_create": "Wed May 2 2021 18:51:11 GMT+0500 (Екатеринбург, стандартное время)",
+      "date_create": "Wed May 26 2021 18:51:11 GMT+0500 (Екатеринбург, стандартное время)",
       "is_read": false
     },
     {
-      "id": 1,
+      "id": 4,
       "chat_id": 2,
       "user_id": 2,
       "content": "asdf!",
@@ -59,7 +60,7 @@
       "is_read": false
     },
     {
-      "id": 1,
+      "id": 5,
       "chat_id": 2,
       "user_id": 1,
       "content": "asdfasdf!",
@@ -67,11 +68,11 @@
       "is_read": false
     },
     {
-      "id": 1,
+      "id": 6,
       "chat_id": 2,
       "user_id": 2,
       "content": "ewqrwe!",
-      "date_create": "Wed May 2 2021 18:51:11 GMT+0500 (Екатеринбург, стандартное время)",
+      "date_create": "Wed May 26 2021 18:51:11 GMT+0500 (Екатеринбург, стандартное время)",
       "is_read": false
     }
   ]

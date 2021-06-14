@@ -9,7 +9,6 @@ interface DialogMessagesProps {
   chatId: number;
 }
 
-
 const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId }) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
