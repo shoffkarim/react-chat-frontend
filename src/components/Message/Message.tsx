@@ -3,7 +3,8 @@ import "./message.sass";
 import classNames from "classnames";
 import avatar from "assets/img/default-avatar.jpg";
 import { Time } from "components";
-import { useGlobalContext } from "App";
+import { useGlobalContext } from "pages/Home";
+
 
 interface Photos {
   id: number,
