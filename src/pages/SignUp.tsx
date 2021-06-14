@@ -1,31 +1,38 @@
-import React from 'react'
-import { useFormik } from 'formik';
-
-interface Ivalues{
-  firstName: string,
-  lastName: string,
-  email: string
+import React from "react";
+import { useFormik } from "formik";
+import "./form.sass"
+interface Ivalues {
+  firstName: string;
+  lastName: string;
+  login: string;
+  password: string;
 }
 
-const validate = (values:Ivalues) => {
-  let errors:any = {};
+const validate = (values: Ivalues) => {
+  let errors: any = {};
 
   if (!values.firstName) {
-    errors.firstName = 'Required';
+    errors.firstName = "Required";
   } else if (values.firstName.length > 15) {
-    errors.firstName = 'Must be 15 characters or less';
+    errors.firstName = "Must be 15 characters or less";
   }
 
   if (!values.lastName) {
-    errors.lastName = 'Required';
+    errors.lastName = "Required";
   } else if (values.lastName.length > 20) {
-    errors.lastName = 'Must be 20 characters or less';
+    errors.lastName = "Must be 20 characters or less";
   }
 
-  if (!values.email) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
+  if (!values.login) {
+    errors.login = "Required";
+  } else if (!/^[A-Za-z]/i.test(values.login)) {
+    errors.login = "Invalid email address";
+  }
+
+  if (!values.password) {
+    errors.password = "Required";
+  } else if (values.password.length > 15) {
+    errors.password = "Must be 15 characters or less";
   }
 
   return errors;
@@ -34,54 +41,64 @@ const validate = (values:Ivalues) => {
 const SignUp: React.FC = () => {
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
+      firstName: "",
+      lastName: "",
+      login: "",
+      password: "",
     },
     validate,
-    onSubmit: values => {
-      console.log("отправка")
+    onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="firstName">First Name</label>
-      <input
-        id="firstName"
-        name="firstName"
-        type="text"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.firstName}
-      />
-      {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
-
-      <label htmlFor="lastName">Last Name</label>
-      <input
-        id="lastName"
-        name="lastName"
-        type="text"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.lastName}
-      />
-      {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
-
-      <label htmlFor="email">Email Address</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.email}
-      />
-      {formik.errors.email ? <div>{formik.errors.email}</div> : null}
-
-      <button type="submit">Submit</button>
-    </form>
+    <div className="form-wrapper">
+      <p className="form-title">Sign Up</p>
+      <form onSubmit={formik.handleSubmit}>
+        <div className="form-block">
+          <label htmlFor="firstName">First Name</label>
+          <input
+            id="firstName"
+            type="text"
+            {...formik.getFieldProps("firstName")}
+          />
+          {formik.touched.firstName && formik.errors.firstName ? (
+            <div>{formik.errors.firstName}</div>
+          ) : null}
+        </div>
+        <div className="form-block">
+          <label htmlFor="lastName">Last Name</label>
+          <input
+            id="lastName"
+            type="text"
+            {...formik.getFieldProps("lastName")}
+          />
+          {formik.touched.lastName && formik.errors.lastName ? (
+            <div>{formik.errors.lastName}</div>
+          ) : null}
+        </div>
+        <div className="form-block">
+          <label htmlFor="login">Email Address</label>
+          <input id="login" type="login" {...formik.getFieldProps("login")} />
+          {formik.touched.login && formik.errors.login ? (
+            <div>{formik.errors.login}</div>
+          ) : null}
+        </div>
+        <div className="form-block">
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            {...formik.getFieldProps("password")}
+          />
+          {formik.touched.password && formik.errors.password ? (
+            <div>{formik.errors.password}</div>
+          ) : null}
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
-}
+};
 
-export default SignUp
+export default SignUp;
