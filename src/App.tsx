@@ -10,9 +10,10 @@ const GlobalContext = React.createContext<GlobalContent>({
 export const useGlobalContext = () => React.useContext(GlobalContext)
 
 const App: React.FC = () => {
-  const onSelectChat = (chat_id: number) => {
-    console.log(123)
-  };
+  const [activeChat, setActiveChat] = React.useState(0);
+  const onSelectActiveChat = (chat_id: number) => {
+    setActiveChat(chat_id)
+  }
   return (
     <GlobalContext.Provider value={{mainUser: 1}}>
     <div className="App">
@@ -21,10 +22,10 @@ const App: React.FC = () => {
           <div className="dialogs-title">
             <p>Messages</p>
           </div>
-          <DialogList/>
+          <DialogList onSelectChat={(chat_id) => onSelectActiveChat(chat_id)}/>
         </div>
         <div className="dialog-window">
-          <DialogMessages chatId={1}/>
+          <DialogMessages chatId={activeChat}/>
           <div className="dialog-input">
             <DialogInput/>
           </div>

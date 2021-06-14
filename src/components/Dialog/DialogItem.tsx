@@ -35,13 +35,14 @@ const DialogItem: React.FC<IDialogItem> = ({ user_id, chat_id, message_id, selec
   React.useEffect(() => {
     Axios.get(`http://localhost:3001/messages?id=${message_id}`)
     .then(({data}) => setMessage(data[0]));
-    Axios.get(`http://localhost:3001/users?id=${message_id}`)
+    Axios.get(`http://localhost:3001/users?id=${user_id}`)
     .then(({data}) => setUser(data[0]));
   }, []);
 
   return (
     <div className={classNames("dialogs-item")} onClick={() => selectChat(chat_id)}>
-      <div className={classNames("dialogs-item__avatar", user.last_seen? "online" : "")}>
+      {/* , user.last_seen? "online" : "" */}
+      <div className={classNames("dialogs-item__avatar")}>
         <img src={user.avatar} alt="" />
       </div>
       <div className="dialogs-item__wrapper">
