@@ -1,5 +1,5 @@
 import React from "react";
-import { DialogInput, DialogItem, DialogList, DialogMessages } from "components";
+import { DialogInput, DialogList, DialogMessages } from "components";
 
 export type GlobalContent = {
   mainUser: number

@@ -37,7 +37,7 @@ const DialogItem: React.FC<IDialogItem> = ({ user_id, chat_id, message_id, selec
     .then(({data}) => setMessage(data[0]));
     Axios.get(`http://localhost:3001/users?id=${user_id}`)
     .then(({data}) => setUser(data[0]));
-  }, []);
+  }, [message_id, user_id]);
 
   return (
     <div className={classNames("dialogs-item")} onClick={() => selectChat(chat_id)}>
