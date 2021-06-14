@@ -26,9 +26,7 @@ const App: React.FC = () => {
         </div>
         <div className="dialog-window">
           <DialogMessages chatId={activeChat}/>
-          <div className="dialog-input">
-            <DialogInput/>
-          </div>
+          <DialogInput/>
         </div>
       </div>
     </div>
