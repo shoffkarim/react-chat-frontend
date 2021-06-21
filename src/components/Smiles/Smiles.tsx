@@ -1,9 +1,14 @@
 import React from "react";
 import "./Smiles.sass";
+import 'emoji-mart/css/emoji-mart.css';
+import { Picker } from "emoji-mart";
+
 
 const Smiles: React.FC = () => {
+  const [emojiVisible, setEmojiVisible] = React.useState(false);
   return (
-    <button className="smiles-icon">
+    <button className="smiles-icon" onClick={() => setEmojiVisible(!emojiVisible)}>
+      {emojiVisible && <Picker/>}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 496 512"

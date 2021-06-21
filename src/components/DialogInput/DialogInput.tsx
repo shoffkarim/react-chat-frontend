@@ -2,6 +2,7 @@ import { ButtonSend, Smiles } from "components";
 import React from "react";
 import "./DialogInput.sass";
 
+
 const DialogInput: React.FC = () => {
   return (
     <div className="dialog-input">
