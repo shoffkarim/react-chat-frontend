@@ -1,11 +1,11 @@
 import { ButtonSend } from "components";
-import React, { ChangeEvent } from "react";
+import React from "react";
 import "./DialogInput.sass";
 import "./Smiles.sass";
 import "emoji-mart/css/emoji-mart.css";
-import { EmojiData, Picker } from "emoji-mart";
+import { Picker } from "emoji-mart";
 import classNames from "classnames";
-import { Emoji } from "emoji-mart/dist-es/utils/data";
+
 
 const DialogInput: React.FC = () => {
   const [emojiVisible, setEmojiVisible] = React.useState(false);

@@ -6,4 +6,5 @@ export interface UserBD {
   last_seen: string;
   avatar: string;
   created_at: string;
+  online: boolean
 }

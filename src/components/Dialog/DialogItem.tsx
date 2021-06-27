@@ -28,7 +28,8 @@ const DialogItem: React.FC<IDialogItem> = ({ user_id, chat_id, message_id, selec
     password: "",
     last_seen: "",
     avatar: "",
-    created_at: ""
+    created_at: "",
+    online: false
   }
   const [message, setMessage] = React.useState(emptyMessage);
   const [user, setUser] = React.useState(emptyUser);
@@ -41,8 +42,7 @@ const DialogItem: React.FC<IDialogItem> = ({ user_id, chat_id, message_id, selec
 
   return (
     <div className={classNames("dialogs-item")} onClick={() => selectChat(chat_id)}>
-      {/* , user.last_seen? "online" : "" */}
-      <div className={classNames("dialogs-item__avatar")}>
+      <div className={classNames("dialogs-item__avatar", user.online? "online" : "")}>
         <img src={user.avatar} alt="" />
       </div>
       <div className="dialogs-item__wrapper">
