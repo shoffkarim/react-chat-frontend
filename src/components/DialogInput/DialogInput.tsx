@@ -1,22 +1,34 @@
-import { ButtonSend } from "components";
 import React from "react";
 import "./DialogInput.sass";
 import "./Smiles.sass";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 import classNames from "classnames";
+import axios from "axios";
 
+interface IDialodInput {
+  chatId: number;
+}
 
-const DialogInput: React.FC = () => {
+const DialogInput: React.FC<IDialodInput> = ({chatId}) => {
   const [emojiVisible, setEmojiVisible] = React.useState(false);
-  const [messageValue, setMessageValue] = React.useState("")
+  const [messageValue, setMessageValue] = React.useState("");
 
   const addEmoji = (emoji: any) => {
-    setMessageValue(messageValue + emoji.native)
-    setEmojiVisible(!emojiVisible)
+    setMessageValue(messageValue + emoji.native);
+    setEmojiVisible(!emojiVisible);
   };
 
-
+  const newMessage = JSON.stringify({
+    chat_id: chatId,
+    user_id: 1,
+    content: messageValue,
+    date_create: new Date(),
+    is_read: true
+  });
+  const sendMessage = () => {
+    axios.post('http://localhost:3001/messages/', JSON.parse(newMessage));
+  }
   return (
     <div className="dialog-input">
       <div className="input-wrapper">
@@ -27,7 +39,7 @@ const DialogInput: React.FC = () => {
             id=""
             placeholder="Type your message ..."
             value={messageValue}
-            onChange={e => setMessageValue(e.target.value)}
+            onChange={(e) => setMessageValue(e.target.value)}
           ></textarea>
           <div className="smiles-wrapper">
             <button
@@ -54,7 +66,14 @@ const DialogInput: React.FC = () => {
           </div>
         </div>
         <div className="input-send">
-          <ButtonSend />
+          <button className="button-send" onClick={() => sendMessage()}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path
+                fill="currentColor"
+                d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"
+              ></path>
+            </svg>
+          </button>
         </div>
       </div>
     </div>

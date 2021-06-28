@@ -18,6 +18,7 @@ const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId }) => {
   const messages: MessageBD[] = useSelector(
     (state: RootState) => state.Messages.items
   );
+  console.log(messages)
 
   return (
     <div className="dialog-messages">
@@ -26,7 +27,7 @@ const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId }) => {
             user_id={obj.user_id}
             date={new Date(obj.date_create)}
             send={true}
-            readed={false}
+            readed={obj.is_read}
             text={obj.content}
             key={index}
           />

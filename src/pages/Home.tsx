@@ -30,7 +30,7 @@ const Home: React.FC = () => {
             {activeChat !== 0 && (
               <div className="dialog-wrapper">
                 <DialogMessages chatId={activeChat} />
-                <DialogInput />
+                <DialogInput chatId={activeChat}/>
               </div>
             )}
             {activeChat === 0 &&
