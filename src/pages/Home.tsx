@@ -1,6 +1,6 @@
 import React from "react";
 import { DialogInput, DialogList, DialogMessages } from "../components";
-
+import axios from "axios";
 export type GlobalContent = {
   mainUser: number;
 };
@@ -11,9 +11,20 @@ export const useGlobalContext = () => React.useContext(GlobalContext);
 
 const Home: React.FC = () => {
   const [activeChat, setActiveChat] = React.useState(0);
+  const [messageCount, setMessageCount] = React.useState(0);
   const onSelectActiveChat = (chat_id: number) => {
     setActiveChat(chat_id);
   };
+
+  const sendMessage = (newMessage: any) => {
+    axios.post('http://localhost:3001/messages/', JSON.parse(newMessage))
+      .then(res => {
+        console.log(res)
+        setMessageCount(messageCount + 1)
+      })
+      .catch(error => {console.error('There was an error!', error)
+      });
+  }
   return (
     <GlobalContext.Provider value={{ mainUser: 1 }}>
       <div className="App">
@@ -29,8 +40,8 @@ const Home: React.FC = () => {
           <div className="dialog-window">
             {activeChat !== 0 && (
               <div className="dialog-wrapper">
-                <DialogMessages chatId={activeChat} />
-                <DialogInput chatId={activeChat}/>
+                <DialogMessages chatId={activeChat} messageCount={messageCount}/>
+                <DialogInput chatId={activeChat} onSend={sendMessage}/>
               </div>
             )}
             {activeChat === 0 &&

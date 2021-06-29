@@ -4,13 +4,13 @@ import "./Smiles.sass";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 import classNames from "classnames";
-import axios from "axios";
 
 interface IDialodInput {
   chatId: number;
+  onSend: (arg0:any) => void;
 }
 
-const DialogInput: React.FC<IDialodInput> = ({chatId}) => {
+const DialogInput: React.FC<IDialodInput> = ({chatId, onSend}) => {
   const [emojiVisible, setEmojiVisible] = React.useState(false);
   const [messageValue, setMessageValue] = React.useState("");
 
@@ -18,17 +18,13 @@ const DialogInput: React.FC<IDialodInput> = ({chatId}) => {
     setMessageValue(messageValue + emoji.native);
     setEmojiVisible(!emojiVisible);
   };
-
   const newMessage = JSON.stringify({
     chat_id: chatId,
     user_id: 1,
     content: messageValue,
     date_create: new Date(),
-    is_read: true
+    is_read: false
   });
-  const sendMessage = () => {
-    axios.post('http://localhost:3001/messages/', JSON.parse(newMessage));
-  }
   return (
     <div className="dialog-input">
       <div className="input-wrapper">
@@ -66,7 +62,10 @@ const DialogInput: React.FC<IDialodInput> = ({chatId}) => {
           </div>
         </div>
         <div className="input-send">
-          <button className="button-send" onClick={() => sendMessage()}>
+          <button className="button-send" onClick={() => {
+            onSend(newMessage);
+            setMessageValue("");
+          }}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path
                 fill="currentColor"

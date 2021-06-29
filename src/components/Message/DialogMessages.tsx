@@ -7,18 +7,22 @@ import Message from "./Message";
 
 interface DialogMessagesProps {
   chatId: number;
+  messageCount: number;
 }
 
-const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId }) => {
+const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId, messageCount }) => {
+  const [count, setCount] = React.useState(messageCount);
+  if(count !== messageCount) {
+    setCount(messageCount);
+  }
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(fetchMessages(chatId));
-  }, [dispatch, chatId]);
+  }, [dispatch, chatId, count]);
 
   const messages: MessageBD[] = useSelector(
     (state: RootState) => state.Messages.items
   );
-  console.log(messages)
 
   return (
     <div className="dialog-messages">

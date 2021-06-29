@@ -91,30 +91,6 @@
       "content": "ewqrwe!",
       "date_create": "Wed May 26 2021 18:51:11 GMT+0500 (Екатеринбург, стандартное время)",
       "is_read": false
-    },
-    {
-      "chat_id": 1,
-      "user_id": 1,
-      "content": "sdfdf",
-      "date_create": "2021-06-28T16:22:21.079Z",
-      "is_read": true,
-      "id": 7
-    },
-    {
-      "chat_id": 1,
-      "user_id": 1,
-      "content": "Привет!😘",
-      "date_create": "2021-06-28T16:22:31.537Z",
-      "is_read": true,
-      "id": 8
-    },
-    {
-      "chat_id": 2,
-      "user_id": 1,
-      "content": "фываыва",
-      "date_create": "2021-06-28T16:22:44.463Z",
-      "is_read": true,
-      "id": 9
     }
   ]
 }
