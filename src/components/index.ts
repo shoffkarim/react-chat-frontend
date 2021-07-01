@@ -1,5 +1,6 @@
 export {default as Message} from "./Message/Message";
 export {default as DialogMessages} from "./Message/DialogMessages";
+export {default as DialogWrapper} from "./Message/DialogWrapper";
 export {default as DialogList} from "./Dialog/DialogList";
 export {default as DialogItem} from "./Dialog/DialogItem";
 export {default as DialogInput} from "./DialogInput/DialogInput";

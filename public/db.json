@@ -91,6 +91,38 @@
       "content": "ewqrwe!",
       "date_create": "Wed May 26 2021 18:51:11 GMT+0500 (Екатеринбург, стандартное время)",
       "is_read": false
+    },
+    {
+      "chat_id": 1,
+      "user_id": 1,
+      "content": "1",
+      "date_create": "2021-07-01T06:28:11.842Z",
+      "is_read": false,
+      "id": 7
+    },
+    {
+      "chat_id": 1,
+      "user_id": 1,
+      "content": "2",
+      "date_create": "2021-07-01T06:37:03.745Z",
+      "is_read": false,
+      "id": 8
+    },
+    {
+      "chat_id": 1,
+      "user_id": 1,
+      "content": "3",
+      "date_create": "2021-07-01T06:37:58.313Z",
+      "is_read": false,
+      "id": 9
+    },
+    {
+      "chat_id": 1,
+      "user_id": 1,
+      "content": "4",
+      "date_create": "2021-07-01T06:38:02.108Z",
+      "is_read": false,
+      "id": 10
     }
   ]
 }

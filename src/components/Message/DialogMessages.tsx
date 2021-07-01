@@ -10,12 +10,19 @@ interface DialogMessagesProps {
   messageCount: number;
 }
 
-const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId, messageCount }) => {
+const DialogMessages: React.FC<DialogMessagesProps> = ({
+  chatId,
+  messageCount,
+}) => {
   const [count, setCount] = React.useState(messageCount);
-  if(count !== messageCount) {
+  const window = React.useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
+
+
+  if (count !== messageCount) {
     setCount(messageCount);
   }
-  const dispatch = useDispatch();
+
   React.useEffect(() => {
     dispatch(fetchMessages(chatId));
   }, [dispatch, chatId, count]);
@@ -25,8 +32,9 @@ const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId, messageCount })
   );
 
   return (
-    <div className="dialog-messages">
-      {messages && messages.map((obj, index) =>
+    <div className="dialog-messages" ref={window}>
+      {messages &&
+        messages.map((obj, index) => (
           <Message
             user_id={obj.user_id}
             date={new Date(obj.date_create)}
@@ -35,12 +43,9 @@ const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId, messageCount })
             text={obj.content}
             key={index}
           />
-        )
-      }
+        ))}
     </div>
   );
 };
 
 export default DialogMessages;
-
-

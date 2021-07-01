@@ -1,5 +1,5 @@
 import React from "react";
-import { DialogInput, DialogList, DialogMessages } from "../components";
+import { DialogInput, DialogList, DialogMessages, DialogWrapper } from "../components";
 import axios from "axios";
 export type GlobalContent = {
   mainUser: number;
@@ -19,7 +19,6 @@ const Home: React.FC = () => {
   const sendMessage = (newMessage: any) => {
     axios.post('http://localhost:3001/messages/', JSON.parse(newMessage))
       .then(res => {
-        console.log(res)
         setMessageCount(messageCount + 1)
       })
       .catch(error => {console.error('There was an error!', error)
@@ -40,7 +39,9 @@ const Home: React.FC = () => {
           <div className="dialog-window">
             {activeChat !== 0 && (
               <div className="dialog-wrapper">
-                <DialogMessages chatId={activeChat} messageCount={messageCount}/>
+                <DialogWrapper messageCount={messageCount}>
+                  <DialogMessages chatId={activeChat} messageCount={messageCount}/>
+                </DialogWrapper>
                 <DialogInput chatId={activeChat} onSend={sendMessage}/>
               </div>
             )}
