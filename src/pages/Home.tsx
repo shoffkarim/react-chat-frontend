@@ -1,5 +1,5 @@
 import React from "react";
-import { DialogInput, DialogList, DialogMessages, DialogWrapper } from "../components";
+import { DialogInput, DialogList, DialogMessages } from "../components";
 import axios from "axios";
 export type GlobalContent = {
   mainUser: number;
@@ -39,9 +39,7 @@ const Home: React.FC = () => {
           <div className="dialog-window">
             {activeChat !== 0 && (
               <div className="dialog-wrapper">
-                <DialogWrapper messageCount={messageCount}>
-                  <DialogMessages chatId={activeChat} messageCount={messageCount}/>
-                </DialogWrapper>
+                <DialogMessages chatId={activeChat} messageCount={messageCount}/>
                 <DialogInput chatId={activeChat} onSend={sendMessage}/>
               </div>
             )}

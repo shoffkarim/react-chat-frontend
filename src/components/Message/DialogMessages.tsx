@@ -10,14 +10,10 @@ interface DialogMessagesProps {
   messageCount: number;
 }
 
-const DialogMessages: React.FC<DialogMessagesProps> = ({
-  chatId,
-  messageCount,
-}) => {
+const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId,  messageCount }) => {
   const [count, setCount] = React.useState(messageCount);
   const window = React.useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
-
 
   if (count !== messageCount) {
     setCount(messageCount);
