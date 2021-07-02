@@ -7,8 +7,8 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Route exact path="/" component={Home}/>
-      <Route exact path="/signup" component={SignUp}/>
+      <Route exact path="/im" component={Home}/>
+      <Route exact path="/" component={SignUp}/>
     </div>
   );
 };

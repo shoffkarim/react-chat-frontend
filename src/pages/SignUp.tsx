@@ -1,9 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
 import "./form.sass"
+import axios from "axios";
+import { Redirect } from "react-router-dom";
 interface Ivalues {
-  firstName: string;
-  lastName: string;
+  name: string;
   login: string;
   password: string;
 }
@@ -11,16 +12,10 @@ interface Ivalues {
 const validate = (values: Ivalues) => {
   let errors: any = {};
 
-  if (!values.firstName) {
-    errors.firstName = "Required";
-  } else if (values.firstName.length > 15) {
-    errors.firstName = "Must be 15 characters or less";
-  }
-
-  if (!values.lastName) {
-    errors.lastName = "Required";
-  } else if (values.lastName.length > 20) {
-    errors.lastName = "Must be 20 characters or less";
+  if (!values.name) {
+    errors.name = "Required";
+  } else if (values.name.length > 15) {
+    errors.name = "Must be 15 characters or less";
   }
 
   if (!values.login) {
@@ -39,49 +34,55 @@ const validate = (values: Ivalues) => {
 };
 
 const SignUp: React.FC = () => {
+  const [login, setLogin] = React.useState(false)
+  const defaultParamsUser = {
+    last_seen: new Date(),
+    avatar: "default-avatar.jpg",
+    created_at: new Date(),
+    online: false
+  }
+  const register = (user: any) => {
+    axios.post('http://localhost:3001/users/', JSON.parse(user))
+      .then(res => {
+        console.log(res)
+      })
+      .catch(error => {console.error('There was an error!', error)
+      });
+  }
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      name: "",
       login: "",
       password: "",
     },
     validate,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      const user = Object.assign(values, defaultParamsUser);
+      register(JSON.stringify(user, null, 2));
+      setLogin(true);
     },
   });
   return (
+    <>
     <div className="form-wrapper">
       <p className="form-title">Sign Up</p>
       <form onSubmit={formik.handleSubmit}>
         <div className="form-block">
           <label htmlFor="firstName">First Name</label>
           <input
-            id="firstName"
+            id="name"
             type="text"
-            {...formik.getFieldProps("firstName")}
+            {...formik.getFieldProps("name")}
           />
-          {formik.touched.firstName && formik.errors.firstName ? (
-            <div>{formik.errors.firstName}</div>
+          {formik.touched.name && formik.errors.name ? (
+            <div className="error-message">{formik.errors.name}</div>
           ) : null}
         </div>
         <div className="form-block">
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            id="lastName"
-            type="text"
-            {...formik.getFieldProps("lastName")}
-          />
-          {formik.touched.lastName && formik.errors.lastName ? (
-            <div>{formik.errors.lastName}</div>
-          ) : null}
-        </div>
-        <div className="form-block">
-          <label htmlFor="login">Email Address</label>
+          <label htmlFor="login">Login</label>
           <input id="login" type="login" {...formik.getFieldProps("login")} />
           {formik.touched.login && formik.errors.login ? (
-            <div>{formik.errors.login}</div>
+            <div className="error-message">{formik.errors.login}</div>
           ) : null}
         </div>
         <div className="form-block">
@@ -92,12 +93,14 @@ const SignUp: React.FC = () => {
             {...formik.getFieldProps("password")}
           />
           {formik.touched.password && formik.errors.password ? (
-            <div>{formik.errors.password}</div>
+            <div className="error-message">{formik.errors.password}</div>
           ) : null}
         </div>
         <button type="submit">Submit</button>
       </form>
     </div>
+    {login && <Redirect to={"/im"}/>}
+    </>
   );
 };
 
