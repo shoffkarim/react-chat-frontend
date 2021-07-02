@@ -3,6 +3,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMessages } from "redux/actions/Messages";
 import { RootState } from "redux/store";
+import SimpleBar from "simplebar-react";
+import 'simplebar/dist/simplebar.min.css';
 import Message from "./Message";
 
 interface DialogMessagesProps {
@@ -15,7 +17,7 @@ const DialogMessages: React.FC<DialogMessagesProps> = ({
   messageCount,
 }) => {
   const [count, setCount] = React.useState(messageCount);
-  const dialog = React.useRef<HTMLDivElement>(null);
+  const scroller = React.useRef<any>(null);
   const dispatch = useDispatch();
 
   if (count !== messageCount) {
@@ -29,8 +31,8 @@ const DialogMessages: React.FC<DialogMessagesProps> = ({
       console.log(error);
     } finally {
       setTimeout(() => {
-        if (dialog.current !== null) {
-          dialog.current.scrollTop = dialog.current.scrollHeight;
+        if (scroller.current !== null) {
+          scroller.current.scrollTop = scroller.current.scrollHeight;
         }
       }, 100);
     }
@@ -40,21 +42,23 @@ const DialogMessages: React.FC<DialogMessagesProps> = ({
   );
 
   return (
-    <div className="dialog-scroller" ref={dialog}>
-      <div className="dialog-messages">
-        {messages &&
-          messages.map((obj, index) => (
-            <Message
-              user_id={obj.user_id}
-              date={new Date(obj.date_create)}
-              send={true}
-              readed={obj.is_read}
-              text={obj.content}
-              key={index}
-            />
-          ))}
+    <SimpleBar style={{ maxHeight: "calc(100% - 90px)"}} scrollableNodeProps={{ref: scroller}}>
+      <div className="dialog-scroller">
+        <div className="dialog-messages">
+          {messages &&
+            messages.map((obj, index) => (
+              <Message
+                user_id={obj.user_id}
+                date={new Date(obj.date_create)}
+                send={true}
+                readed={obj.is_read}
+                text={obj.content}
+                key={index}
+              />
+            ))}
+        </div>
       </div>
-    </div>
+    </SimpleBar>
   );
 };
 

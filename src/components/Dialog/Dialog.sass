@@ -146,7 +146,6 @@
 .dialog
   &-window
     flex-grow: 1
-    padding: 10px
     padding-bottom: 0px
     border-right: 1px solid #f0f0f6
     display: flex
@@ -157,9 +156,8 @@
     flex-direction: column
     overflow: hidden
   &-scroller
-    overflow-y: scroll
-    max-height: calc(100vh - 90px)
-    margin-right: -17px
+    padding-left: 17px
+    padding-right: 17px
   &-empty
     flex-grow: 1
     display: flex
@@ -174,3 +172,5 @@
     &__text
       color: #000
       opacity: 0.5
+.simplebar-scrollbar:before
+  background-color: #4849a1
