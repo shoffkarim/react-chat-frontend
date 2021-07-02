@@ -62,7 +62,7 @@ const DialogInput: React.FC<IDialodInput> = ({chatId, onSend}) => {
           </div>
         </div>
         <div className="input-send">
-          <button className="button-send" onClick={() => {
+          <button className={classNames("button-send", messageValue !== "" ? "active" : "")} onClick={() => {
             onSend(newMessage);
             setMessageValue("");
           }}>

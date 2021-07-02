@@ -10,7 +10,10 @@ interface DialogMessagesProps {
   messageCount: number;
 }
 
-const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId,  messageCount }) => {
+const DialogMessages: React.FC<DialogMessagesProps> = ({
+  chatId,
+  messageCount,
+}) => {
   const [count, setCount] = React.useState(messageCount);
   const dialog = React.useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
@@ -23,10 +26,10 @@ const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId,  messageCount }
     try {
       dispatch(fetchMessages(chatId));
     } catch (error) {
-      console.log(error)
+      console.log(error);
     } finally {
       setTimeout(() => {
-        if(dialog.current !== null) {
+        if (dialog.current !== null) {
           dialog.current.scrollTop = dialog.current.scrollHeight;
         }
       }, 100);
@@ -37,18 +40,20 @@ const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId,  messageCount }
   );
 
   return (
-    <div className="dialog-messages" ref={dialog}>
-      {messages &&
-        messages.map((obj, index) => (
-          <Message
-            user_id={obj.user_id}
-            date={new Date(obj.date_create)}
-            send={true}
-            readed={obj.is_read}
-            text={obj.content}
-            key={index}
-          />
-        ))}
+    <div className="dialog-scroller" ref={dialog}>
+      <div className="dialog-messages">
+        {messages &&
+          messages.map((obj, index) => (
+            <Message
+              user_id={obj.user_id}
+              date={new Date(obj.date_create)}
+              send={true}
+              readed={obj.is_read}
+              text={obj.content}
+              key={index}
+            />
+          ))}
+      </div>
     </div>
   );
 };

@@ -6,11 +6,18 @@
   overflow: hidden
   padding: 0 0px
   background-color: #f4f4fa
+  margin-top: -1px
+  @media screen and ( max-width: 900px )
+    max-width: 90px
+  @media screen and ( max-width: 500px )
+    max-width: 50px
   &-title
     font-size: 25px
     color: #000
     margin: 0
     padding: 10px 10px
+    @media screen and ( max-width: 900px )
+      display: none
   &-item
     display: flex
     flex-direction: row
@@ -20,8 +27,23 @@
     border-bottom: 1px solid #eaebf4
     cursor: pointer
     transition: all 0.4s
+    @media screen and ( max-width: 900px )
+      justify-content: center
+      padding: 0
     &:first-child
       border-top: 1px solid #eaebf4
+    &.active
+      background-color: #4849a1
+      transition: all 0.4s
+      .dialogs-item__name
+        color: #fff
+        transition: all 0.4s
+      .dialogs-item__time
+        color: #fff
+        transition: all 0.4s
+      .dialogs-item__text
+        color: #fff
+        transition: all 0.4s
     &:hover
       background-color: #4849a1
       transition: all 0.4s
@@ -41,6 +63,13 @@
       min-height: 30px
       position: relative
       padding-left: 10px
+      @media screen and ( max-width: 900px )
+        padding-left: 0px
+        width: 45px
+        height: 45px
+      @media screen and ( max-width: 500px )
+        width: 25px
+        height: 25px
       img
         width: 100%
         height: 100%
@@ -57,6 +86,9 @@
           position: absolute
           bottom: 0
           right: 0
+          @media screen and ( max-width: 900px )
+            bottom: 2px
+            right: 2px
     &__wrapper
       display: flex
       flex-direction: column
@@ -65,6 +97,10 @@
       max-width: 100%
       overflow: hidden
       padding-right: 10px
+      @media screen and ( max-width: 900px )
+        max-width: 0px
+        padding-right: 0
+        margin-left: 0
     &__top
       display: flex
       flex-direction: row
@@ -120,7 +156,7 @@
     display: flex
     flex-direction: column
     overflow: hidden
-  &-messages
+  &-scroller
     overflow-y: scroll
     max-height: calc(100vh - 90px)
     margin-right: -17px

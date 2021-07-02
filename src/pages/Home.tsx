@@ -34,6 +34,7 @@ const Home: React.FC = () => {
             </div>
             <DialogList
               onSelectChat={(chat_id) => onSelectActiveChat(chat_id)}
+              activeChat={activeChat}
             />
           </div>
           <div className="dialog-window">

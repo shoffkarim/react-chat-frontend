@@ -9,10 +9,11 @@ interface IDialogItem {
   user_id: number;
   chat_id: number;
   message_id: number;
+  activeChat: number
   selectChat: (arg0: number) => void
 }
 
-const DialogItem: React.FC<IDialogItem> = ({ user_id, chat_id, message_id, selectChat }) => {
+const DialogItem: React.FC<IDialogItem> = ({ user_id, chat_id, message_id, activeChat, selectChat }) => {
   let emptyMessage: MessageBD = {
     id: 0,
     chat_id: 0,
@@ -41,7 +42,7 @@ const DialogItem: React.FC<IDialogItem> = ({ user_id, chat_id, message_id, selec
   }, [message_id, user_id]);
 
   return (
-    <div className={classNames("dialogs-item")} onClick={() => selectChat(chat_id)}>
+    <div className={classNames("dialogs-item", activeChat === chat_id ? "active" : "")} onClick={() => selectChat(chat_id)}>
       <div className={classNames("dialogs-item__avatar", user.online? "online" : "")}>
         <img src={user.avatar} alt="" />
       </div>

@@ -6,16 +6,17 @@ import { RootState } from "redux/store";
 import DialogItem from "./DialogItem";
 
 interface IDialogList {
-  onSelectChat: (arg0: number) => void
+  onSelectChat: (arg0: number) => void;
+  activeChat: number
 }
 
-const DialogList: React.FC<IDialogList> = ({onSelectChat}) => {
+const DialogList: React.FC<IDialogList> = ({onSelectChat, activeChat}) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(fetchChats());
   }, [dispatch]);
   const chats: ChatsBD[] = useSelector((state: RootState) => state.Chats.items);
-  
+
   return (
     <div className="dialog-list">
       {chats &&
@@ -26,6 +27,7 @@ const DialogList: React.FC<IDialogList> = ({onSelectChat}) => {
             chat_id={obj.id}
             message_id={obj.last_message}
             key={index}
+            activeChat={activeChat}
           />
         ))}
     </div>
