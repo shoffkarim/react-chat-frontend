@@ -12,7 +12,7 @@ interface DialogMessagesProps {
 
 const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId,  messageCount }) => {
   const [count, setCount] = React.useState(messageCount);
-  const window = React.useRef<HTMLDivElement>(null);
+  const dialog = React.useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
 
   if (count !== messageCount) {
@@ -20,15 +20,24 @@ const DialogMessages: React.FC<DialogMessagesProps> = ({ chatId,  messageCount }
   }
 
   React.useEffect(() => {
-    dispatch(fetchMessages(chatId));
+    try {
+      dispatch(fetchMessages(chatId));
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setTimeout(() => {
+        if(dialog.current !== null) {
+          dialog.current.scrollTop = dialog.current.scrollHeight;
+        }
+      }, 100);
+    }
   }, [dispatch, chatId, count]);
-
   const messages: MessageBD[] = useSelector(
     (state: RootState) => state.Messages.items
   );
 
   return (
-    <div className="dialog-messages" ref={window}>
+    <div className="dialog-messages" ref={dialog}>
       {messages &&
         messages.map((obj, index) => (
           <Message
