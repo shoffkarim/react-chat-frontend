@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import "./form.sass"
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+const bcrypt = require('bcryptjs')
 interface Ivalues {
   name: string;
   login: string;
@@ -56,7 +57,9 @@ const SignUp: React.FC = () => {
       password: "",
     },
     validate,
-    onSubmit: (values) => {
+    onSubmit: (values: any) => {
+      const hashed = bcrypt.hashSync(values.password, bcrypt.genSaltSync());
+      values.password = hashed;
       const user = Object.assign(values, defaultParamsUser);
       register(JSON.stringify(user, null, 2));
       setLogin(true);

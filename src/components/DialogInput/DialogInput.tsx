@@ -4,7 +4,6 @@ import "./Smiles.sass";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 import classNames from "classnames";
-
 interface IDialodInput {
   chatId: number;
   onSend: (arg0:any) => void;
