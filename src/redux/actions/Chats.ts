@@ -8,7 +8,7 @@ export const setChats = (item:ChatsBD) => ({
 });
 
 export const fetchChats = () => (dispatch: AppDispatch) => {
-  Axios.get(`http://localhost:3001/chats`)
+  Axios.get(`${window.location.href}:3001/chats`)
   .then(({data}) =>
   dispatch(setChats(data)));
 };

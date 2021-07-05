@@ -17,7 +17,7 @@ const Home: React.FC = () => {
   };
 
   const sendMessage = (newMessage: any) => {
-    axios.post('http://localhost:3001/messages/', JSON.parse(newMessage))
+    axios.post(`${window.location.href}:3001/messages/`, JSON.parse(newMessage))
       .then(res => {
         setMessageCount(messageCount + 1)
       })

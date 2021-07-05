@@ -8,7 +8,7 @@ export const setMessages = (item:MessageBD) => ({
 });
 
 export const fetchMessages = (id:number) => (dispatch: AppDispatch) => {
-  Axios.get(`http://localhost:3001/messages?chat_id=${id}`)
+  Axios.get(`${window.location.href}:3001/messages?chat_id=${id}`)
   .then(({data}) =>
   dispatch(setMessages(data)));
 };

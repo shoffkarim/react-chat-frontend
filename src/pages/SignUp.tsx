@@ -43,7 +43,7 @@ const SignUp: React.FC = () => {
     online: false
   }
   const register = (user: any) => {
-    axios.post('http://localhost:3001/users/', JSON.parse(user))
+    axios.post(`${window.location.href}:3001/users/`, JSON.parse(user))
       .then(res => {
         console.log("login")
       })

@@ -35,9 +35,9 @@ const DialogItem: React.FC<IDialogItem> = ({ user_id, chat_id, message_id, activ
   const [message, setMessage] = React.useState(emptyMessage);
   const [user, setUser] = React.useState(emptyUser);
   React.useEffect(() => {
-    Axios.get(`http://localhost:3001/messages?id=${message_id}`)
+    Axios.get(`${window.location.href}:3001/messages?id=${message_id}`)
     .then(({data}) => setMessage(data[0]));
-    Axios.get(`http://localhost:3001/users?id=${user_id}`)
+    Axios.get(`${window.location.href}:3001/users?id=${user_id}`)
     .then(({data}) => setUser(data[0]));
   }, [message_id, user_id]);
 
