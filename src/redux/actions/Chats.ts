@@ -8,7 +8,7 @@ export const setChats = (item:ChatsBD) => ({
 });
 
 export const fetchChats = () => (dispatch: AppDispatch) => {
-  Axios.get(`${window.location.protocol}//${window.location.hostname}:3001/chats`)
+  Axios.get(`/chats`)
   .then(({data}) =>
   dispatch(setChats(data)));
 };
