@@ -46,14 +46,14 @@ const DialogMessages: React.FC<DialogMessagesProps> = ({
       <div className="dialog-scroller">
         <div className="dialog-messages">
           {messages &&
-            messages.map((obj, index) => (
+            messages.map((obj) => (
               <Message
                 user_id={obj.user_id}
                 date={new Date(obj.date_create)}
                 send={true}
                 readed={obj.is_read}
                 text={obj.content}
-                key={index}
+                key={obj.id}
               />
             ))}
         </div>

@@ -20,13 +20,13 @@ const DialogList: React.FC<IDialogList> = ({onSelectChat, activeChat}) => {
   return (
     <div className="dialog-list">
       {chats &&
-        chats.map((obj, index) => (
+        chats.map((obj) => (
           <DialogItem
             selectChat={(chat_id) => onSelectChat(chat_id)}
             user_id={obj.user_id}
             chat_id={obj.id}
             message_id={obj.last_message}
-            key={index}
+            key={obj.id}
             activeChat={activeChat}
           />
         ))}

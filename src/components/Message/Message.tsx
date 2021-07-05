@@ -43,8 +43,8 @@ const Message: React.FC<MessageProps> = ({ user_id, send, readed, text, attachme
       </div>
       {attachments && (
           <div className="message__attachments">
-            {attachments.map((obj, index) =>
-              <img src={obj.url} alt="" key={index} />
+            {attachments.map((obj) =>
+              <img src={obj.url} alt="" key={obj.id} />
             )}
 
           </div>
