@@ -8,10 +8,10 @@ import { Emoji } from "emoji-mart/dist-es/utils/data";
 const Smiles: React.FC = () => {
   const [emojiVisible, setEmojiVisible] = React.useState(false);
 
-  const addEmoji = (emoji:Emoji) => {
-    console.log(emoji)
-  }
-  
+  // const addEmoji = (emoji:Emoji) => {
+  //   console.log(emoji)
+  // }
+
   return (
     <div className="smiles-wrapper">
       <button

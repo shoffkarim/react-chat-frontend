@@ -39,6 +39,46 @@
       "created_at": "2021-07-05T15:28:45.665Z",
       "online": false,
       "id": 4
+    },
+    {
+      "name": "sdfasd",
+      "login": "asdf",
+      "password": "$2a$10$iFMJtG6bt1X3fR3xjw1fzeyc4AuCdm2TaM1yBrMe6XwIkAmqOFabK",
+      "last_seen": "2021-07-05T15:47:47.621Z",
+      "avatar": "default-avatar.jpg",
+      "created_at": "2021-07-05T15:47:47.621Z",
+      "online": false,
+      "id": 5
+    },
+    {
+      "name": "sadf",
+      "login": "sdf",
+      "password": "$2a$10$oq6wdW.f2N11Hnr.AhSCOORURJjUfap7bHtrv.GCZvuiN89B14Wy.",
+      "last_seen": "2021-07-05T15:57:23.500Z",
+      "avatar": "default-avatar.jpg",
+      "created_at": "2021-07-05T15:57:23.500Z",
+      "online": false,
+      "id": 6
+    },
+    {
+      "name": "fsdaf",
+      "login": "sdf",
+      "password": "$2a$10$16F6yWPxcRPZLKPkE3mxSOKjYEP7BMaCvy7Imqr4Wq6X/QHxpk2Mi",
+      "last_seen": "2021-07-05T15:58:32.615Z",
+      "avatar": "default-avatar.jpg",
+      "created_at": "2021-07-05T15:58:32.615Z",
+      "online": false,
+      "id": 7
+    },
+    {
+      "name": "sadf",
+      "login": "sadf",
+      "password": "$2a$10$No06zGaEMVyu/wgjRCxXMOEm4LhoVxbPorbIccG37wIF2AJU8fvpq",
+      "last_seen": "2021-07-05T16:03:12.385Z",
+      "avatar": "default-avatar.jpg",
+      "created_at": "2021-07-05T16:03:12.385Z",
+      "online": false,
+      "id": 8
     }
   ],
   "chats": [
@@ -109,6 +149,14 @@
       "date_create": "2021-07-05T15:29:17.983Z",
       "is_read": false,
       "id": 7
+    },
+    {
+      "chat_id": 2,
+      "user_id": 1,
+      "content": "test",
+      "date_create": "2021-07-05T15:47:56.095Z",
+      "is_read": false,
+      "id": 8
     }
   ]
 }

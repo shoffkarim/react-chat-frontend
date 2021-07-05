@@ -45,7 +45,7 @@ const SignUp: React.FC = () => {
   const register = (user: any) => {
     axios.post('http://localhost:3001/users/', JSON.parse(user))
       .then(res => {
-        console.log(res)
+        console.log("login")
       })
       .catch(error => {console.error('There was an error!', error)
       });
