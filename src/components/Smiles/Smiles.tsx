@@ -3,14 +3,9 @@ import "./Smiles.sass";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 import classNames from "classnames";
-import { Emoji } from "emoji-mart/dist-es/utils/data";
 
 const Smiles: React.FC = () => {
   const [emojiVisible, setEmojiVisible] = React.useState(false);
-
-  // const addEmoji = (emoji:Emoji) => {
-  //   console.log(emoji)
-  // }
 
   return (
     <div className="smiles-wrapper">
@@ -25,7 +20,7 @@ const Smiles: React.FC = () => {
           ></path>
         </svg>
       </button>
-      {emojiVisible && <Picker set={"apple"} onSelect={emoji => addEmoji(emoji)} showPreview={false} />}
+      {emojiVisible && <Picker set={"apple"}  showPreview={false} />}
     </div>
   );
 };
